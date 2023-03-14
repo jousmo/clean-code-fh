@@ -1,4 +1,4 @@
-(()=>{
+(() => {
   //* Aplicar el principio de responsabilidad única
   //* Priorizar la composición frente a la herencia
 
@@ -11,20 +11,15 @@
     ) {}
   }
 
-  class InputAttributes extends HtmlElement {
+  class InputAttributes {
     constructor(
       public value: string,
       public placeholder: string,
-      id: string,
-    ) {
-      super(id, 'input');
-    }
+    ) {}
   }
 
-  class InputEvents extends InputAttributes {
-    constructor( value: string, placeholder: string, id: string ) {
-      super( value, placeholder, id );
-    }
+  class InputEvents {
+    constructor() {}
 
     setFocus() {};
     getValue() {};
@@ -34,8 +29,24 @@
 
 
   //? Idea para la nueva clase InputElement
+  class InputElement {
+    public htmlElement: HtmlElement
+    public inputAttributes: InputAttributes
+    public inputEvents: InputEvents
+    constructor (
+      value: string,
+      placeholder: string,
+      id: string
+    ) {
+      this.htmlElement = new HtmlElement(id, 'input')
+      this.inputAttributes = new InputAttributes(value, placeholder)
+      this.inputEvents = new InputEvents()
+    }
+  }
 
-  const nameField = new InputEvents('Fernando', 'Enter first name', 'txtName');
+  const nameField = new InputElement(
+    'Fernando', 'Enter first name', 'txtName'
+  );
 
   console.log({ nameField });
 })()
