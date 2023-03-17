@@ -1,5 +1,5 @@
 import './style.css'
-import './clean-code/07-homework-classes'
+import './solid/01-srp'
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   <div>
