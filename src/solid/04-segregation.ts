@@ -1,27 +1,32 @@
 (() => {
   interface Bird {
-    fly(): void;
     eat(): void;
+    swim(): void;
+  }
+
+  interface FlyingBird {
+    fly(): void;
+  }
+
+  interface RunningBird {
     run(): void;
   }
 
-  class Tucan implements Bird {
+  class Tucan implements Bird, FlyingBird {
     public fly() {}
     public eat() {}
-    public run() {}
+    public swim() {}
   }
 
-  class Humminbird implements Bird {
+  class Humminbird implements Bird, FlyingBird {
     public fly() {}
     public eat() {}
-    public run() {}
+    public swim() {}
   }
 
-  class Ostrich implements Bird {
-    public fly() {
-      throw new Error('esta ave no vuela') // Viola el principio ISP
-    }
+  class Ostrich implements Bird, RunningBird {
     public eat() {}
     public run() {}
+    public swim() {}
   }
 })()
